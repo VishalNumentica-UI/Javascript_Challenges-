@@ -1,2 +1,2 @@
-# Javascript_Challenges-
+# Javascript_Challenges
 Beginner Level Program
