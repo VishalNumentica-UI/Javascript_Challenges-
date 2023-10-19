@@ -1,6 +1,6 @@
 function interChangeAnElementWithNextElement(){
     let temp =input[index-1];
-    if(index<=0 || index!=input.length){
+    if(index<=0 || index>=input.length){
         return input;
     }
     else if(index==input.length){
@@ -15,6 +15,6 @@ function interChangeAnElementWithNextElement(){
 }
 
 const input=[10, 20, 30, 40, 50];
-const index=5;
+const index=9;
 
 console.log(interChangeAnElementWithNextElement(input,index));
