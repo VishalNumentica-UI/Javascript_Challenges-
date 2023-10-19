@@ -1,13 +1,13 @@
-let str="numentica ui internship";
-
-console.log(NoL(str));
-
-function NoL(){
+function numberOfLetters(){
     let count=0;
-    for(let i=0;i<str.length;i++){
-        if((str.codePointAt(i)>=97 && str.codePointAt(i)<=122) || (str.codePointAt(i)>=65 && str.codePointAt(i)<=90)){
+    for(let iterator=0;iterator<text.length;iterator++){
+        if((text.codePointAt(iterator)>=97 && text.codePointAt(iterator)<=122) || (text.codePointAt(iterator)>=65 && text.codePointAt(iterator)<=90)){
             count++;
         }
     }
     return count;
 }
+
+let text="numentica ui internship -66 jj JJ @#$$%%q#!@#$!231Uyyyy";
+
+console.log(numberOfLetters(text));

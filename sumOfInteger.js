@@ -1,13 +1,14 @@
-let val=96472
 
-console.log(soInteger(val));
-
-function soInteger(){
+function sumOfInteger(){
     let sum=0;
-     while(val>0){
-        let rem=val%10;
-        sum+=rem;
-        val=Math.floor(val/10);
+     while(inputNumber>0){
+        let Remainder=inputNumber%10;
+        sum+=Remainder;
+        inputNumber=Math.floor(inputNumber/10);
      }
      return sum;
 }
+
+let inputNumber=265223
+
+console.log(sumOfInteger(inputNumber));
