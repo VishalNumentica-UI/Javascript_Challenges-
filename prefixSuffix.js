@@ -16,5 +16,9 @@ function addSuffixOrPrefix(){
 
 
 let FirstName="arun",LastName="mr",condition="suffix";
-
+if(typeof(FirstName)=="string"){
 console.log(addSuffixOrPrefix(FirstName,LastName,condition));
+}
+else{
+  console.log("Invalid First & Last Name");
+}
