@@ -4,7 +4,7 @@ Input: [32, 66, 80, 120, 45]
 Output: 200
 */
 
-let givenArray=[32, 66, 80, 120, 45];
+let givenArray=[32, 66, 80, 10, 45];
 
 console.log(findLargestOfTwoNumbers(givenArray));
 

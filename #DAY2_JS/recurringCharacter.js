@@ -5,7 +5,7 @@ Output: "c@t in c the bag"
 */
 
 
-function recurringCharacterInAnString(){
+function recurringCharacterInAnString(givenString){
    let characaterArray=givenString.split(''),result=[];
    console.log(characaterArray)
    for(let index=0;index<characaterArray.length;index++){
@@ -22,6 +22,6 @@ function recurringCharacterInAnString(){
 }
 
 
-let givenString="cat inc ssc  c  the cagc";
+let a="cat inc ssc  c  the cagc";
 
-console.log(recurringCharacterInAnString(givenString));
+console.log(recurringCharacterInAnString(a));

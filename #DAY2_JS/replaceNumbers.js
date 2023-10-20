@@ -5,17 +5,17 @@ Output: arun@ddd
 */
 
 
-function replaceNumbersInAnString(){
-    let CharacterArray=givenString.split('');
-    for(let index=0;index<CharacterArray.length;index++){
+function replaceNumbersInAnString(givenString, replaceCharacter){
+    let characterArray=givenString.split('');
+    for(let index=0;index<characterArray.length;index++){
           if(givenString.charAt(index)>='0' && givenString.charAt(index)<='9'){
-            CharacterArray[index]=replaceCharacter;
+            characterArray[index]=replaceCharacter;
       }
     }
-    return CharacterArray.join("");
+    return characterArray.join("");
 }
 
-let givenString="arun@123",replaceCharacter="d";
+let givenString="arun@0123rdrd",replaceCharacter="d";
 
 console.log(replaceNumbersInAnString(givenString, replaceCharacter));
 

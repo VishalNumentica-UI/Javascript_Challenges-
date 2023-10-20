@@ -1,9 +1,9 @@
 let list= ["arun", "balu", "cathy", "krish", "aadhir", "aariketh", "kamal"];
 
-groupingNames={}
+let groupingNames={}
 let mappingFirstCharacter=list.map(item=>item[0]);
 
-//console.log(mappingFirstCharacter);
+console.log(mappingFirstCharacter);
 
 let groupList=mappingFirstCharacter.filter((item,id)=>{
     return mappingFirstCharacter.indexOf(item) == id;
@@ -17,7 +17,7 @@ groupList.forEach(item=>{
 
 groupList.forEach(iterator=>{
     for(let word of list){
-        if(word[0] == iterator){
+        if(word[0] === iterator){
             groupingNames[iterator].push(word);
         }
     }
