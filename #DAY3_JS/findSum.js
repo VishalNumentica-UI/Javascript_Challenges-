@@ -7,19 +7,20 @@ findSum(8, 3) should return 8+16+24=48
 
 function findSum(givenNumber,multiples){
     let sum=0,index=1;
+
+    if(givenNumber <= 0 || multiples <= 0){
+        return ("Invalid Arguments");
+    }
+    
     while(index<=multiples){
          sum+=givenNumber*index;
-        
          index++;
     }
+
     return sum;
 }
 
-let givenNumber=8,multiples=3;
+let table=8,iterator=3;
 
-if(givenNumber <= 0 || multiples <= 0){
-    console.log("Invalid Arguments");
-}
-else{
-   console.log(findSum(givenNumber,multiples));
-}
+
+console.log(findSum(table,iterator));

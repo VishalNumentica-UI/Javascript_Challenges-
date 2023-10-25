@@ -7,25 +7,17 @@ Output [“nu”, “me”, “nt”, “ic”, “au”, “i];
 */
 
 function stringSplit(givenString,characterSplit){
-    let inital=0,final=characterSplit,index=0,newArray=[];
-    let givenStringLength;
-    if(givenString.length % characterSplit === 0){
-        givenStringLength=givenString.length/characterSplit;
-    }
-    else{
-        givenStringLength=givenString.length/characterSplit ;
-    }
+    let final=characterSplit,index=0,newArray=[];
+
+    let givenStringLength=givenString.length/characterSplit;
 
     for(iterator=0;iterator<givenStringLength;iterator++){
         newArray.push(givenString.slice(index,final));
         index+=characterSplit;
         final+=characterSplit;
      }
-    
     return newArray;
-     
 }
-let givenString='numenticaui';
-let characterSplit=2;
+let word='numenticaui',charSplit=2;
 
-console.log(stringSplit(givenString,characterSplit));
+console.log(stringSplit(word,charSplit));
