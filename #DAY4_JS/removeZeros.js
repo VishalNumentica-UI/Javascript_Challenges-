@@ -7,7 +7,7 @@ removeZeros(input, "trailing") // output 000000123423423
 
 function removeZeros(input,condition){
 
-    if(typeof input === "string" && (condition ==="leading" || condition === "trailing")){
+    if(typeof input === "string" && (condition ==="leading" || condition === "trailing" ) && !isNaN(input)){
         if(condition === "leading"){
             return parseInt(input);
         }
@@ -24,6 +24,6 @@ function removeZeros(input,condition){
 
 }
 
-const givenInput="000000123423423000",checkCondition="trailing";
+const givenInput="000000123423423000",checkCondition="leading";
 
 console.log(removeZeros(givenInput,checkCondition));
