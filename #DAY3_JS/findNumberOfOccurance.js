@@ -19,12 +19,24 @@ function findNumberOfOccurance(givenString,findString){
         
     }
     return counter;
+
+   
+}
+
+//simple method to regex
+const count= (givenString)=>{
+    const re = /kind/g
+    return ((givenString || " ").match(re) || []).length;
+
 }
 
 
 let groupWord='be  whenever possible.kindNess is kindwhat matters kind'.toLowerCase();
 
 let find='kind';
+
+//regex call.
+console.log(count(groupWord));
 
 console.log(findNumberOfOccurance(groupWord,find));
 
