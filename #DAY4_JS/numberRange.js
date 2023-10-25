@@ -8,7 +8,8 @@ checkInRange([10, 100], 8) // true false 8 is not in between 10 and 100
 function inRange(givenArray,checkNumber){
 
     const newArray=[];
-    for(let index=0;index<givenArray.length;index++){
+
+    for(let index=0; index<givenArray.length; index++){
         
     let item=givenArray[index];
 
@@ -19,14 +20,15 @@ function inRange(givenArray,checkNumber){
    }
 
    if(newArray.length === 2 && typeof checkNumber == "number"){
-    let initial=newArray[0],final=newArray[1];
+
+      let initial=newArray[0],final=newArray[1];
     
-    if(checkNumber>=initial && checkNumber<=final){   
-        return true;    
-    }
-    else{  
+      if(checkNumber>=initial && checkNumber<=final){   
+         return true;    
+      }
+      else{  
          return false;   
-    }
+      }
 
    }
    else{

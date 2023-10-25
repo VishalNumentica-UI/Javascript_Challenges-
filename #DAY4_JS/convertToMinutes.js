@@ -5,9 +5,9 @@ Try with different hours and minutes and cover all possible negative cases
 */
 
 function convertToMinutes(hours,minutes){
-     if(typeof hours ==="number" && typeof minutes === "number" && hours >= 0 && minutes >= 0){
+     if(typeof hours === "number" && typeof minutes === "number" && hours >= 0 && minutes >= 0){
         return hours*60 + minutes;
-     }
+     } 
      return "Invalid Arguments";
 }
 

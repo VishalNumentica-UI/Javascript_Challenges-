@@ -12,9 +12,9 @@ function removeZeros(input,condition){
             return parseInt(input);
         }
         else{
-            let newString=input.split("").reverse().join("");
+            const newString=input.split("").reverse().join("");
  
-            let stringToNumber=parseInt(newString).toString().split("").reverse().join("");
+            const stringToNumber=parseInt(newString).toString().split("").reverse().join("");
             
             return stringToNumber;
 

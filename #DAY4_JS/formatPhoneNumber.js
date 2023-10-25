@@ -9,7 +9,7 @@ function usFormatNumber(phoneNumber){
 
     const numberToString=phoneNumber.toString();
 
-    if(typeof phoneNumber === "number" && numberToString.length ===10){
+    if(typeof phoneNumber === "number" && numberToString.length === 10){
         return  "("+numberToString.substring(0,3)+")"+
                     numberToString.substring(3,6)+"-"+
                     numberToString.substring(6,numberToString.length-2)+

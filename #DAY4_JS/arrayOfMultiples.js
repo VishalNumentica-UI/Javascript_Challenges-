@@ -7,8 +7,9 @@ Result: [2, 4, 6, 8, 10]
 
 function arrayOfMultiples(givenArray){
     let newArray=[];
-
-   for(let index=0;index<givenArray.length;index++){
+   
+   //Checking the Edge cases
+   for(let index=0; index<givenArray.length; index++){
       const item=givenArray[index];
 
       if(typeof item === "number"){
@@ -20,6 +21,7 @@ function arrayOfMultiples(givenArray){
 
     const multiple=newArray[0],iterator=newArray[1];
     let initial=1;
+    
     newArray=[];
 
     while(initial<=iterator){
@@ -29,8 +31,11 @@ function arrayOfMultiples(givenArray){
 
    }
    else{
+
     return "Invalid Arguments";
+
    }
+   
    return newArray;
 }
 
