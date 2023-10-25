@@ -9,21 +9,18 @@ output -  48
 function findEvenSum(givenArray){
     let sum=0;
 
-    for(let index=0;index<givenArray.length;index++){
-        let number=givenArray[index];
-        if(number%2==0){
-           sum+=number;
+    for(let index=0; index<givenArray.length; index++){
+
+        let element=givenArray[index];
+
+        if(element%2==0 && typeof givenArray[index] === 'number'){
+           sum+=element;
         }
+
     }
     return sum
 }
 
-let givenArray=[38, 3, 2, 8, 31,-1,-6,-2,false,true,"#"],newArray=[];
+let items=[38, 3, 2, 8, 31,-1,-6,-2,false,true,"#"];
 
-for(let index=0;index<givenArray.length;index++){
-    if(typeof givenArray[index] === 'number'){
-        newArray.push(givenArray[index]);
-    }
-}
-
-console.log(findEvenSum(newArray));
+console.log(findEvenSum(items));

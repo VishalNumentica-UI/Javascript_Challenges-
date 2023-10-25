@@ -9,16 +9,15 @@ filterOut([“a”, “d”, 1, true, “cd”, 33], “string”);
 Output [1, true, 33];
 */
 
-function filterOut(givenArray){
-    if(typeof givenArray != typeCheck){
-        return givenArray;
+function filterOut(arrayItem, typeToCheck) {
+    if (typeof arrayItem !== typeToCheck){
+        return arrayItem;
     }  
 }
 
+const givenArray=["a", "d", -45, 66, true,{name:"dhan",age:23}, null,"cd"];
+const typeCheck='string';
 
-let givenArray=['a', 'd', 1, true, 'cd', 33];
-let typeCheck='boolean';
-
-let resultantArray=givenArray.filter(filterOut)
+const resultantArray=givenArray.filter((val) => filterOut(val, typeCheck));
 
 console.log(resultantArray);

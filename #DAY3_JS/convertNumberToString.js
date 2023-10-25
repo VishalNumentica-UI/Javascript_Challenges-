@@ -6,10 +6,11 @@ convertNumberToString(98)
 output “nineeight”
 */
 
+function convertNumberToString(digits){
 
-function convertNumberToString(number){
-   let numberToString=number.toString(),resultantString="";
+  if(typeof digits ==="number" && digits >=0){
 
+   let numberToString=digits.toString(),resultantString="";
    
    for(let index=0;index<numberToString.length;index++){
         let value=numberToString.charAt(index);
@@ -45,14 +46,14 @@ function convertNumberToString(number){
         case '0':
             resultantString+= 'zer0';
             break;
-        default:
-            resultantString+="Invalid";
     }
    }
    return resultantString;
+  }
+   return "invalid Argument is passed";
     
 }
 
-let number=98;
+let givenNumber=98;
 
-console.log(convertNumberToString(number));
+console.log(convertNumberToString(givenNumber));

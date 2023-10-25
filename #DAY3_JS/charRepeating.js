@@ -8,11 +8,14 @@ Output: a
 
 
 function characterRepeating(givenString){
-     let currentCounter=0,currentCharacter,previousCharacter,previousCounter=0;
+    let currentCounter=0,currentCharacter,previousCharacter,previousCounter=0;
+
+    if(typeof givenString === "string"){
 
     for(let index=0;index<givenString.length;index++){
-
+        
          if(givenString.charAt(index) === givenString.charAt(index+1)){
+
              currentCharacter=givenString.charAt(index);
              currentCounter++;
            
@@ -21,14 +24,15 @@ function characterRepeating(givenString){
                     previousCounter=currentCounter;
                     previousCharacter=currentCharacter;
                 }
-
              }
+
          }
          else{
 
             if(currentCounter==0 && previousCounter==0){
                 continue;
             }
+
             else if(currentCounter>=previousCounter){
                 previousCounter=currentCounter;
                 previousCharacter=currentCharacter;
@@ -39,16 +43,19 @@ function characterRepeating(givenString){
             }
             else{
                 continue;
-            }
-            
+            } 
          }
-       
     }
-  //console.log(previousCharacter+""+previousCounter);
+    
+    }
+    else{
+        return "Invalid Arguments";
+    }
+
     return previousCharacter;
 
 }
 
-let givenString='traaainngfornewbie';
+let word="traaainnggggggggfornewbie";
 
-console.log(characterRepeating(givenString));
+console.log(characterRepeating(word));
