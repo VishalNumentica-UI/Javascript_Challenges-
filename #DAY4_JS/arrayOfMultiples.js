@@ -12,7 +12,7 @@ function arrayOfMultiples(givenArray){
    for(let index=0; index<givenArray.length; index++){
       const item=givenArray[index];
 
-      if(typeof item === "number"){
+      if(typeof item === "number" && item >= 0){
           newArray.push(item);  
        }
     }
@@ -40,6 +40,6 @@ function arrayOfMultiples(givenArray){
 }
 
 
-const elements=[2,10,undefined,null,{name:"vishal"}];
+const elements=[2,4,undefined,null,{name:"vishal"}];
 
 console.log(arrayOfMultiples(elements));
