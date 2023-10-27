@@ -31,10 +31,10 @@ function replaceTemplateString(template,items){
   }
   }
   
-  const givenString = `Numentica is a company focused on delivering high quality code. It is located in #[location] #[state] #[phone]`;
+  const givenString = `Numentica#[arun] is a company focused on delivering high quality code. It is located in #[arun] #[state] #[phone]`;
   
   const details=[
-      ["location","Chennai"],
+      ["arun","Chennai"],
        ["state", "Tamil Nadu"],
        ["phone", "9840164723"]
   ];

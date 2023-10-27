@@ -8,13 +8,13 @@ Note: The numbers will be given as input in any order.
 */
 
 //checking the Edge cases
-function checkCondition(ele){
+function checkIfNumeric(ele) {
     return typeof ele === "number";
 }
 
 function missingNumbers(elements){
 
-    const validElements=elements.filter(checkCondition);
+    const validElements=elements.filter(checkIfNumeric);
 
     const sortedElements=validElements.sort((a,b)=>a-b);
 
@@ -24,10 +24,7 @@ function missingNumbers(elements){
 
     for(let index=minimum;index<=maximum;index++){
         
-        if(sortedElements.includes(index)){
-            continue;
-        }
-        else{
+        if(!sortedElements.includes(index)){
             resultantArray.push(index);
         }
     }
@@ -35,6 +32,6 @@ function missingNumbers(elements){
     return resultantArray;
 }
 
-const items= [7, 10, 12, 9];
+const items= [4, 8];
 
 console.log(missingNumbers(items));
