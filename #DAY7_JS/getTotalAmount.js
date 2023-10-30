@@ -28,7 +28,7 @@ function getTotalAmount(stockDetails,priceDetails){
            }
         })
     });
-    return sum.toFixed(2);
+    return `$${sum.toFixed(2)}`;
 }
 const getPrice=[
     { item: 'Jam - Apricot', quantity:1 },
