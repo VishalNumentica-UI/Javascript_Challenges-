@@ -1,14 +1,51 @@
 function commonInterestOfStudents(items){
-  const studentRecord={};
-  for(let item of students){
-       for(let index=0;index<(item.books.length);index++){
-          studentRecord[item.books[index]]=item.name;
-       }
-  // studentRecord[item.]
- }
-     return studentRecord;
-     console.log(studentRecord)
+  const studentRecords={},nameCounter={};
+
+  items.forEach(studentData => {
+  
+    studentData.books.forEach(bookName => {
+    
+        if(studentRecords[bookName]){
+          studentRecords[bookName].push(studentData.name);
+        }
+        else{
+          studentRecords[bookName]=[studentData.name];
+        }
+       
+    })
+  });
+
+  //find the common interests
+  Object.keys(studentRecords).forEach(interestedBook =>{
+
+    if(studentRecords[interestedBook].length>1){
+
+      studentRecords[interestedBook].forEach(nameField =>{
+
+        if(nameCounter[nameField]){
+          nameCounter[nameField]++;
+        }
+        else{
+          nameCounter[nameField]=1;
+        }
+
+      })
+    }
+  })
+  
+  let max=0,commonInterest="";
+  Object.keys(nameCounter).filter(iterator => {
+        if(nameCounter[iterator]>max){
+          max=nameCounter[iterator]
+          commonInterest=iterator;
+        }
+  })
+  console.log(`user who shares most interest with other users is ${commonInterest}`)
+
+  return studentRecords;
+
 }
+
 
 const students = [
     {
@@ -34,5 +71,7 @@ const students = [
   ];
 
   console.log(commonInterestOfStudents(students));
+
+  
 
   
