@@ -17,7 +17,7 @@ function sumOfMinMax(elements){
 
     const sortElements=validElements.sort((a,b)=>a-b);
 
-    return [sortElements[0],sortElements[sortElements.length-1]];
+    return sortElements[0]+sortElements[sortElements.length-1];
 
 }
 
