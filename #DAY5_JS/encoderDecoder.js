@@ -11,79 +11,50 @@ decode(“evyr”, 4) -> arun
 
 */
 
-//Checking the Edge cases
-function validationCheck(text,index){
-
-    if(typeof text === "string" && typeof index === "number"){
-        return true;
-    }
-    else{
-        return "Invalid Arguments is passed!"
-    }
-
-}
 
 //Encoding
 function encoding(input,skipChar){
-        let newString="";
+   // console.log(input,skipChar);
+   if(typeof input === "string" && typeof skipChar === "number"){
 
-        input = input.toLowerCase();
+   let alphabets="abcdefghijklmnopqrstuvwxyz";
+   let encodedString="";
 
-        for(let index=0;index<input.length;index++){
-
-            let item=input.codePointAt(index),newlength=item+skipChar;
-
-            if(newlength>122){
-                item-=122;
-                item+=96+skipChar;
-            }
-            else{
-                item+=skipChar;
-            }
-            newString+=String.fromCharCode(item);
-            
-        }
-      
-        return newString;
-}
+   for(let index=0;index<input.length;index++){
+    
+    const findIndex=alphabets.indexOf(input[index]);
    
+    let result=(findIndex+skipChar)%alphabets.length;
+    //To handle decoding while negative value 
+    if(result<0){
+        result=26+result;
+    }
+    encodedString+=alphabets[result];
+   }
+
+   return encodedString;
+}
+  else{
+     console.log("Invalid Arguments is passed");  
+   }        
+}
 
 //Decoding
 function decoding(data,backChar){
-
-       let newString="";
-
-        data = data.toLowerCase();
-
-        for(let index=0;index<data.length;index++){
-            let item=data.codePointAt(index),newlength=item-backChar;
-            
-            if(newlength<97){
-                item=97-newlength;
-                console.log(item);
-                item=122-item+1;
-                console.log(item);
-            }
-            else{
-                item-=backChar;
-            }
-            newString+=String.fromCharCode(item);
-            
-        }
-      
-        return newString;
-  
+     let resultantString=encoding(data,-backChar);
+     return resultantString;
 
 }
 
 const word="arun",nextChar=4,condition="decode";
 
-if((condition === "encode" || condition === "decode") && validationCheck(word,nextChar)){
+if((condition === "encode" || condition === "decode")){
     if(condition === "encode"){
         console.log(encoding(word,nextChar));
     }
     else if(condition === "decode"){
         console.log(decoding(word,nextChar));
+       
     }
 }
 else{
