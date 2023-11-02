@@ -1,10 +1,11 @@
-function minimumVechicleRequires(vehicleType,deliveryWeight){
 
+function minimumVechicleRequires(vehicleType,deliveryWeight){
+    
     let requiredVechicles=[];
 
-    vehicleType=vehicleType.filter(checkField =>{
-        return(typeof checkField.type === "string" && typeof checkField.weightCapacity === "number" && checkField.weightCapacity >= 0)    
-     })
+    vehicleType=vehicleType.filter(vehicle =>{
+        return(typeof vehicle.type === "string" && typeof vehicle.weightCapacity === "number" && vehicle.weightCapacity >= 0)    
+    })
 
      deliveryWeight=deliveryWeight.filter(checkField =>{
         return(typeof checkField.location === "string" && typeof checkField.weight === "number" && checkField.weight >= 0)    
@@ -18,10 +19,10 @@ function minimumVechicleRequires(vehicleType,deliveryWeight){
     deliveryWeight.forEach(parcelWeight => {
         
         result={};
-    
+        let parcelweightCache=parcelWeight.weight;
         vehicleType.forEach(vehicleWeight=> {
               
-            if(vehicleWeight.weightCapacity <= parcelWeight.weight){
+            if(vehicleWeight.weightCapacity <= parcelweightCache){
                 if(result[vehicleWeight.type]){
                     result[vehicleWeight.type]=result[vehicleWeight.type]+1;
                 }
@@ -29,15 +30,15 @@ function minimumVechicleRequires(vehicleType,deliveryWeight){
                     result[vehicleWeight.type]=1;
                 }
               
-                parcelWeight.weight-=vehicleWeight.weightCapacity;
+                parcelweightCache-=vehicleWeight.weightCapacity;
                 
-                    while(vehicleWeight.weightCapacity <= parcelWeight.weight){
+                while(vehicleWeight.weightCapacity <= parcelweightCache){
 
-                        result[vehicleWeight.type]=result[vehicleWeight.type]+1;
-                        
-                        parcelWeight.weight -= vehicleWeight.weightCapacity
+                    result[vehicleWeight.type]=result[vehicleWeight.type]+1;
+                    
+                    parcelweightCache -= vehicleWeight.weightCapacity
 
-                    }
+                }
                 
             }
             
@@ -45,6 +46,7 @@ function minimumVechicleRequires(vehicleType,deliveryWeight){
         requiredVechicles.push(result)
        
     });
+    
     return requiredVechicles;
 }
 
@@ -56,19 +58,29 @@ const vehicles = [
     { type: 'ace', weightCapacity: 50 }
     
   ];
+
   const parcels = [
-    { location: 'velachery', weight: 30 },
+    { location: 'velachery', weight: 1990 },
     { location: 'madipakkam', weight: 17 },
     { location: 'sholinganallur', weight: 240 },
     { location: 'chennai', weight:5000}
   ];
 
 
+  const vehicles1 = [
+    { type: 'cycle', weightCapacity: 10},
+    { type: 'bike', weightCapacity: 50 },
+    { type: 'tempo', weightCapacity: 1 },
+    { type: 'auto', weightCapacity: 100 },
+    { type: 'ace', weightCapacity: 1 }
+  ];
+  
 
-   console.log(minimumVechicleRequires(vehicles,parcels));
 
-
-
+  console.log(minimumVechicleRequires(vehicles,parcels));
+    
+   
+   console.log(minimumVechicleRequires(vehicles1,parcels));
 
  /* Sorting Method
 
