@@ -29,33 +29,44 @@ function IsValidUserDatabase(databaseRecord){
 function maximumCountryChecker(resultantItems){
     let maxIncome=0;
     let countryName="";
-    for(eachItem of Object.keys(resultantItems)){
-         if(resultantItems[eachItem] > maxIncome){
+    const filterCountry = Object.keys(resultantItems).filter(eachItem =>{
+        if(resultantItems[eachItem] > maxIncome){
             maxIncome=resultantItems[eachItem];
             countryName = eachItem;
          }
-    }
-    
+         return countryName;
+    })
+ 
     return countryName;
 
 }
 
 //Find the country which has the highest income.
-function countryWithHighestIncome(DataSets){
-    const highestIncome =DataSets.sort((a,b)=>{
+function countryWithHighestIncome(dataSets){
+    const highestIncome =dataSets.sort((a,b)=>{
         return b.income - a.income;
     })
 
-    return highestIncome[0].country;
+    let resultArray=[];
+
+    let filterHighestIncome=highestIncome.filter(filterData =>{
+    if(filterData.income === highestIncome[0].income){
+        resultArray.push(filterData.country)
+      }
+    })
+
+
+    return resultArray
 }
 
 
 //Find the country which has the combined highest income
-function countryWithCombinedHighestIncome(DataSets){
+function countryWithCombinedHighestIncome(dataSets){
+    
 
     const countryCombinedIncome={};
 
-    DataSets.forEach(eachUserData => {
+    dataSets.forEach(eachUserData => {
 
         if(countryCombinedIncome[eachUserData.country]){
             
@@ -66,7 +77,7 @@ function countryWithCombinedHighestIncome(DataSets){
         }
         
     });
-   
+  
     return maximumCountryChecker(countryCombinedIncome);
     
     
@@ -74,16 +85,18 @@ function countryWithCombinedHighestIncome(DataSets){
 
 
 //Get all the users info (complete info) who has the email which ends with .gov
-function emailEndsWithGivenInput(DataSets){
+function emailEndsWithGivenInput(dataSets){
     let userInformationOfEmail=[]
-   
-    DataSets.forEach(dataSet =>{
-        if(dataSet.email.match(/^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/)){
-            let useremail=dataSet.email;
-            let indexOfAt=useremail.indexOf('@');
-            let sliceAtCharacters=useremail.slice(indexOfAt,useremail.length);
+  
+    dataSets.forEach(dataSetItem =>{
+        if(dataSetItem.email.match(/^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/)){
+            const useremail=dataSetItem.email;
+            const indexOfAt=useremail.indexOf('@');
+            
+            const sliceAtCharacters=useremail.slice(indexOfAt,useremail.length).toLowerCase();
             if(sliceAtCharacters.includes(".gov")){
-                userInformationOfEmail.push(dataSet);
+                
+                userInformationOfEmail.push(dataSetItem);
             }
         }
         
@@ -94,10 +107,10 @@ function emailEndsWithGivenInput(DataSets){
 }
 
 //Find the country name which has the maximum combined income for Female
-function CombinedFemaleIncome(DataSets){
-    let femaleCombinedIncome={};
-    DataSets.forEach(userData =>{
-          
+function combinedFemaleIncome(dataSets){
+    const femaleCombinedIncome={};
+
+    dataSets.forEach(userData =>{
         if(userData.gender.toLowerCase() === "female"){
               if(femaleCombinedIncome[userData.country]){
                 femaleCombinedIncome[userData.country]=femaleCombinedIncome[userData.country]+userData.income;
@@ -113,9 +126,26 @@ function CombinedFemaleIncome(DataSets){
 }
 
 
-function validUserData(userRecord){
-    
-  let validRecords=userRecord.every(IsValidUserDatabase);
+
+function validUserData(userRecord,page,recordsRequired){
+
+    const spiltRecord=Math.ceil(userRecord.length/recordsRequired);
+    if((page >= 0 && recordsRequired >= 0) && page<=spiltRecord){
+
+        const initialPage=(page-1)*recordsRequired;
+        const finalPage=initialPage+recordsRequired;
+        userRecord=userRecord.slice(initialPage,finalPage);
+    }
+    else {
+        return "Invalid Arguments";
+    }
+
+
+    let validRecords=userRecord.every(IsValidUserDatabase);
+    console.log('user record', userRecord)
+    console.log(validRecords);
+
+
 
   if(validRecords){
 
@@ -125,12 +155,16 @@ function validUserData(userRecord){
 
   console.log(emailEndsWithGivenInput(userRecord))
 
-  console.log(`Country name which has the maximum combined income for Female is ${CombinedFemaleIncome(userRecord)}`)
+  console.log(`Country name which has the maximum combined income for Female is ${combinedFemaleIncome(userRecord)}`)
  }
  else{
     console.log("Invalid Arguments is passed");
  }
 }
 
+
 //function Call
-validUserData(usersDataSets)
+
+const numberOfPage=2;
+const numberOfRecordRequired=1000
+console.log(validUserData(usersDataSets,numberOfPage,numberOfRecordRequired));
