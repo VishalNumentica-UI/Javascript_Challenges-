@@ -59,6 +59,7 @@ const vehicles = [
     
   ];
 
+
   const parcels = [
     { location: 'velachery', weight: 1990 },
     { location: 'madipakkam', weight: 17 },
